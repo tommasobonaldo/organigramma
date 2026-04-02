@@ -1,0 +1,831 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Organigramma — Cantaluppi &amp; Partners</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,400&family=DM+Serif+Display&display=swap');
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#f5f3ef;--surface:#fff;--border:#dedad3;--text:#1a1916;--muted:#6b6860;
+  --pu50:#EEEDFE;--pu600:#534AB7;--pu800:#3C3489;
+  --te50:#E1F5EE;--te600:#0F6E56;--te800:#085041;
+  --bl50:#E6F1FB;--bl600:#185FA5;--bl800:#0C447C;
+  --co50:#FAECE7;--co600:#993C1D;--co800:#712B13;
+  --am50:#FAEEDA;--am600:#854F0B;--am800:#633806;
+  --gr50:#F1EFE8;--gr600:#5F5E5A;--gr800:#444441;
+  --pi50:#FBEAF0;--pi600:#993556;--pi800:#72243E;
+  --sk50:#eaf3fb;--sk600:#2271a8;--sk800:#0c4472;
+  --gn600:#3B6D11;
+  --vi50:#f3f0fe;--vi600:#6d28d9;--vi800:#4c1d95;
+}
+body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);min-height:100vh;padding:28px 20px 80px}
+header{text-align:center;margin-bottom:26px}
+header h1{font-family:'DM Serif Display',serif;font-size:26px;font-weight:400;letter-spacing:-.4px}
+header p{font-size:12px;color:var(--muted);margin-top:5px}
+.toolbar{display:flex;gap:10px;justify-content:center;margin-bottom:20px;flex-wrap:wrap}
+.btn{padding:7px 16px;border-radius:8px;font-size:12px;font-weight:500;cursor:pointer;border:none;font-family:'DM Sans',sans-serif;transition:opacity .15s}
+.btn:hover{opacity:.82}
+.btn-primary{background:var(--pu600);color:#fff}
+.btn-ghost{background:transparent;color:var(--muted);border:1.5px solid var(--border)}
+.btn-danger{background:#fee2e2;color:#991b1b;border:1px solid #fca5a5}
+.btn-photo{background:var(--gr50);color:var(--gr800);border:1.5px solid var(--gr600);width:100%;margin-top:10px;padding:8px;display:flex;align-items:center;justify-content:center;gap:6px}
+.btn-photo:hover{background:var(--border)}
+.btn-rm-photo{background:#fff0f0;color:#991b1b;border:1px solid #fca5a5;font-size:11px;padding:4px 10px;margin-top:6px}
+
+.page{display:flex;flex-direction:column;align-items:center;max-width:1600px;margin:0 auto;position:relative}
+
+/* NODE */
+.nbox{border-radius:10px;padding:10px 16px;text-align:center;border:1.5px solid;cursor:pointer;transition:transform .15s,box-shadow .15s}
+.nbox:hover{transform:translateY(-2px);box-shadow:0 6px 18px rgba(0,0,0,.09)}
+.nbox .rl{font-size:10px;font-weight:600;letter-spacing:.6px;text-transform:uppercase;opacity:.7;margin-bottom:2px}
+.nbox .nm{font-size:13px;font-weight:600;line-height:1.3}
+.nbox .sb{font-size:11px;margin-top:3px;opacity:.68}
+.c-pu{background:var(--pu50);border-color:var(--pu600);color:var(--pu800)}
+.c-te{background:var(--te50);border-color:var(--te600);color:var(--te800)}
+
+/* CONNECTORS */
+.vl{width:2px;background:var(--border)}
+.hl{height:2px;background:var(--border)}
+.vld{width:2px;background:repeating-linear-gradient(to bottom,var(--border) 0,var(--border) 5px,transparent 5px,transparent 10px)}
+
+/* AREA HEADER */
+.ah{border-radius:8px;padding:7px 18px;font-size:11px;font-weight:600;letter-spacing:.5px;text-transform:uppercase;border:1.5px solid;text-align:center;white-space:nowrap}
+.ah.c-bl{background:var(--bl50);border-color:var(--bl600);color:var(--bl800)}
+.ah.c-co{background:var(--co50);border-color:var(--co600);color:var(--co800)}
+.ah.c-gr{background:var(--gr50);border-color:var(--gr600);color:var(--gr800);border-style:dashed}
+
+/* ── PILL ── */
+.pgrid{display:flex;flex-wrap:wrap;gap:4px;justify-content:center}
+.pill{
+  display:inline-flex;align-items:center;gap:5px;
+  font-size:11px;padding:3px 9px 3px 3px;
+  border-radius:20px;border:1.5px solid;font-weight:500;
+  cursor:pointer;transition:transform .1s;white-space:nowrap;
+  position:relative;
+}
+.pill:hover{transform:scale(1.04)}
+.pill-avatar{width:22px;height:22px;border-radius:50%;object-fit:cover;flex-shrink:0;border:1.5px solid rgba(255,255,255,.6)}
+.pill-initials{width:22px;height:22px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:8px;font-weight:700;flex-shrink:0;border:1.5px solid rgba(255,255,255,.5);background:rgba(255,255,255,.35);line-height:1}
+
+.pill.c-bl{background:var(--bl50);border-color:var(--bl600);color:var(--bl800)}
+.pill.c-co{background:var(--co50);border-color:var(--co600);color:var(--co800)}
+.pill.c-pi{background:var(--pi50);border-color:var(--pi600);color:var(--pi800)}
+.pill.c-sk{background:var(--sk50);border-color:var(--sk600);color:var(--sk800)}
+.pill.c-gr{background:var(--gr50);border-color:var(--gr600);color:var(--gr800)}
+.pill.socio{border-color:var(--gn600);border-width:2px}
+.pill.junior{border-style:dashed;opacity:.85}
+.pill.resp{font-weight:700;border-width:2px}
+.pill.resp .pill-label::after{content:' ★';font-size:9px;opacity:.75}
+.pill.avvocato{background:var(--vi50);border-color:var(--vi600);color:var(--vi800)}
+.pill.avvocato.socio{border-color:var(--gn600)}
+
+/* ── TOOLTIP ── */
+.pill-tooltip{
+  display:none;
+  position:absolute;
+  bottom:calc(100% + 8px);
+  left:50%;transform:translateX(-50%);
+  background:var(--text);color:#fff;
+  font-size:11px;font-weight:400;line-height:1.4;
+  padding:7px 10px;border-radius:8px;
+  max-width:220px;white-space:normal;text-align:left;
+  z-index:100;pointer-events:none;
+  box-shadow:0 4px 14px rgba(0,0,0,.2);
+  width:max-content;
+}
+.pill-tooltip::after{
+  content:'';position:absolute;top:100%;left:50%;transform:translateX(-50%);
+  border:5px solid transparent;border-top-color:var(--text);
+}
+.pill:hover .pill-tooltip{display:block}
+
+/* ops tooltip same style */
+.ops-tooltip{
+  display:none;
+  position:absolute;
+  left:calc(100% + 8px);top:50%;transform:translateY(-50%);
+  background:var(--text);color:#fff;
+  font-size:11px;font-weight:400;line-height:1.4;
+  padding:7px 10px;border-radius:8px;
+  max-width:220px;white-space:normal;
+  z-index:100;pointer-events:none;
+  box-shadow:0 4px 14px rgba(0,0,0,.2);
+  width:max-content;
+}
+.ops-tooltip::after{
+  content:'';position:absolute;right:100%;top:50%;transform:translateY(-50%);
+  border:5px solid transparent;border-right-color:var(--text);
+}
+.ops-cfo:hover .ops-tooltip,
+.ops-person:hover .ops-tooltip{display:block}
+.ops-cfo,.ops-person{position:relative}
+
+/* SEDE */
+.sede-wrap{display:flex;flex-direction:column;align-items:center}
+.sede-lbl{font-size:10px;font-weight:600;letter-spacing:.7px;text-transform:uppercase;color:var(--muted);margin-bottom:5px;text-align:center;white-space:nowrap}
+.sub-lbl{font-size:10px;font-weight:600;letter-spacing:.5px;text-transform:uppercase;margin:8px 0 6px;text-align:center}
+
+/* BRANCHES */
+.branches{display:flex;gap:0;justify-content:center;align-items:flex-start;width:100%;max-width:1500px}
+.branch{display:flex;flex-direction:column;align-items:center;flex:1;min-width:0;padding:0 8px}
+.sec-block{display:flex;flex-direction:column;align-items:center;width:100%}
+.sedi-row{display:flex;gap:18px;justify-content:center;align-items:flex-start;width:100%;flex-wrap:wrap}
+.sede-col{display:flex;flex-direction:column;align-items:center;min-width:60px}
+.sec-sep{width:80%;height:1px;background:var(--border);margin:10px 0 4px;opacity:.5}
+
+/* OPERATIONS — flex:none + padding-top to visually clear marchi content */
+.branch-ops{
+  display:flex;flex-direction:column;align-items:center;
+  flex:0 0 200px;width:200px;
+  padding:0 0 0 16px;
+  /* align ops box top with area header row, not with marchi content */
+}
+.ops-box{border:2px dashed var(--gr600);border-radius:12px;padding:14px 14px;background:var(--gr50);width:100%}
+.ops-title{font-size:10px;font-weight:600;letter-spacing:.8px;text-transform:uppercase;color:var(--gr600);text-align:center;margin-bottom:10px}
+.ops-cfo{background:var(--am50);border-radius:7px;padding:6px 8px;margin-bottom:8px;border:1px dashed var(--am600);cursor:pointer;display:flex;align-items:center;gap:7px}
+.ops-cfo:hover{opacity:.78}
+.ops-cfo .opn{font-size:12px;font-weight:600;color:var(--am800)}
+.ops-cfo .opr{font-size:10px;color:var(--am600)}
+.ops-person{padding:5px 0;border-bottom:1px solid var(--border);cursor:pointer;display:flex;align-items:center;gap:7px}
+.ops-person:last-child{border-bottom:none}
+.ops-person:hover{opacity:.75}
+.ops-person .opn{font-size:12px;font-weight:500;color:var(--gr800)}
+.ops-person .opr{font-size:10px;color:var(--gr600)}
+.ops-avatar{width:28px;height:28px;border-radius:50%;object-fit:cover;flex-shrink:0;border:1.5px solid var(--border)}
+.ops-initials{width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:700;flex-shrink:0;background:var(--border);color:var(--gr800)}
+
+/* PHOTO PREVIEW */
+.photo-preview-wrap{display:flex;flex-direction:column;align-items:center;gap:8px;margin-top:14px}
+.photo-preview{width:80px;height:80px;border-radius:50%;object-fit:cover;border:2px solid var(--border);display:none}
+.photo-preview.has-photo{display:block}
+.photo-placeholder{width:80px;height:80px;border-radius:50%;background:var(--bg);border:2px dashed var(--border);display:flex;align-items:center;justify-content:center;color:var(--muted);font-size:11px;text-align:center}
+
+/* LEGEND */
+.legend{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin-top:36px;padding-top:16px;border-top:1px solid var(--border)}
+.li{display:flex;align-items:center;gap:5px;font-size:11px;color:var(--muted)}
+.ld{width:11px;height:11px;border-radius:50%;border:1.5px solid}
+.lp{width:38px;height:14px;border-radius:10px;border:1.5px solid;display:flex;align-items:center;justify-content:center;font-size:9px}
+.ll{width:18px;height:2px}
+
+/* MODAL */
+.mo{display:none;position:fixed;inset:0;background:rgba(0,0,0,.3);z-index:200;align-items:center;justify-content:center}
+.mo.open{display:flex}
+.mc{background:var(--surface);border-radius:14px;padding:26px 30px;min-width:300px;max-width:480px;width:90vw;box-shadow:0 20px 50px rgba(0,0,0,.16);max-height:92vh;overflow-y:auto}
+.mc h2{font-size:15px;font-weight:600;margin-bottom:16px}
+.mc label{display:block;font-size:11px;font-weight:500;color:var(--muted);margin-bottom:3px;margin-top:10px}
+.mc input[type=text],.mc select,.mc textarea{width:100%;padding:7px 11px;border:1.5px solid var(--border);border-radius:7px;font-size:13px;font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);outline:none}
+.mc textarea{resize:vertical;min-height:72px;line-height:1.5}
+.mc input:focus,.mc select:focus,.mc textarea:focus{border-color:var(--pu600)}
+.cr{display:flex;align-items:center;gap:8px;margin-top:9px;font-size:13px;color:var(--text)}
+.cr input[type=checkbox]{width:auto;accent-color:var(--pu600)}
+.ma{display:flex;gap:8px;justify-content:flex-end;margin-top:18px;flex-wrap:wrap}
+#file-input{display:none}
+</style>
+</head>
+<body>
+
+<header>
+  <h1>Cantaluppi &amp; Partners</h1>
+  <p>Organigramma · Studio IP · Padova · Roma · Milano · Treviso</p>
+</header>
+
+<div class="toolbar">
+  <button class="btn btn-primary" onclick="openAdd()">+ Aggiungi persona</button>
+  <button class="btn btn-ghost" style="opacity:.4;cursor:not-allowed" title="Usa il pulsante Scarica qui sotto">Esporta HTML</button>
+</div>
+
+<div class="page" id="main-page">
+
+  <!-- L0 FONDATORE -->
+  <div class="nbox c-pu" style="min-width:210px" onclick="editNode('fondatore')">
+    <div style="display:flex;align-items:center;justify-content:center;margin-bottom:6px">
+      <img id="av-fondatore" src="data:image/jpeg;base64,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" style="width:48px;height:48px;border-radius:50%;object-fit:cover;border:2px solid rgba(255,255,255,.5)">
+    </div>
+    <div class="rl">Socio fondatore</div>
+    <div class="nm" id="nm-fondatore">Cantaluppi S.</div>
+    <div class="sb" id="sb-fondatore">Vertice strategico</div>
+  </div>
+  <div class="vl" style="height:24px"></div>
+
+  <!-- L1 CEO -->
+  <div class="nbox c-te" style="min-width:210px" onclick="editNode('ceo')">
+    <div class="rl">CEO · Socio</div>
+    <div class="nm" id="nm-ceo">Locas D.</div>
+    <div class="sb" id="sb-ceo">Direzione operativa</div>
+  </div>
+  <div class="vl" style="height:24px"></div>
+  <div class="hl" style="width:min(1300px,94%)"></div>
+
+  <!-- BRANCHES -->
+  <div class="branches" id="branches-row">
+
+    <!-- ══ BREVETTI ══ -->
+    <div class="branch" style="flex:1.55" id="branch-brev">
+      <div class="vl" style="height:12px"></div>
+      <div class="ah c-bl" id="ah-brev">Area brevetti</div>
+      <div class="vl" style="height:10px"></div>
+
+      <div class="sec-block">
+        <div class="sub-lbl" style="color:var(--bl600)">Consulenti</div>
+        <div class="sedi-row">
+          <div class="sede-col">
+            <div class="sede-lbl">Padova</div>
+            <div class="pgrid" id="g-bc-pd">
+              <span class="pill c-bl socio resp" onclick="editPill(this)"><span class="pill-initials">MS</span><span class="pill-label">Morabito S.</span><span class="pill-tooltip"></span></span>
+              <span class="pill c-bl socio" onclick="editPill(this)"><span class="pill-initials">FS</span><span class="pill-label">Fabris S.</span><span class="pill-tooltip"></span></span>
+              <span class="pill c-bl socio" onclick="editPill(this)"><span class="pill-initials">SC</span><span class="pill-label">Susanetto C.</span><span class="pill-tooltip"></span></span>
+              <span class="pill c-bl" onclick="editPill(this)"><span class="pill-initials">ME</span><span class="pill-label">Marzella E.</span><span class="pill-tooltip"></span></span>
+              <span class="pill c-bl" onclick="editPill(this)"><span class="pill-initials">CT</span><span class="pill-label">Cavallin T.</span><span class="pill-tooltip"></span></span>
+              <span class="pill c-bl" onclick="editPill(this)"><span class="pill-initials">DM</span><span class="pill-label">De Giorgi M.</span><span class="pill-tooltip"></span></span>
+              <span class="pill c-bl" onclick="editPill(this)"><span class="pill-initials">MI</span><span class="pill-label">Menna I.</span><span class="pill-tooltip"></span></span>
+              <span class="pill c-bl" onclick="editPill(this)"><span class="pill-initials">MG</span><span class="pill-label">Milan G.</span><span class="pill-tooltip"></span></span>
+            </div>
+          </div>
+          <div class="sede-col">
+            <div class="sede-lbl">Roma</div>
+            <div class="pgrid" id="g-bc-ro">
+              <span class="pill c-bl socio" onclick="editPill(this)"><span class="pill-initials">LM</span><span class="pill-label">Leone M.</span><span class="pill-tooltip"></span></span>
+              <span class="pill c-bl" onclick="editPill(this)"><span class="pill-initials">PS</span><span class="pill-label">Pensalfini S.</span><span class="pill-tooltip"></span></span>
+            </div>
+          </div>
+          <div class="sede-col">
+            <div class="sede-lbl">Treviso</div>
+            <div class="pgrid" id="g-bc-tv">
+              <span class="pill c-bl" onclick="editPill(this)"><span class="pill-initials">CB</span><span class="pill-label">Cavasin B.</span><span class="pill-tooltip"></span></span>
+              <span class="pill c-bl" onclick="editPill(this)"><span class="pill-initials">CV</span><span class="pill-label">Cavasin V.</span><span class="pill-tooltip"></span></span>
+            </div>
+          </div>
+          <div class="sede-col">
+            <div class="sede-lbl">Milano</div>
+            <div class="pgrid" id="g-bc-mi">
+              <span class="pill c-bl" onclick="editPill(this)"><span class="pill-initials">FD</span><span class="pill-label">Filippini D.</span><span class="pill-tooltip"></span></span>
+              <span class="pill c-bl" onclick="editPill(this)"><span class="pill-initials">VA</span><span class="pill-label">Veronesi A.</span><span class="pill-tooltip"></span></span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="sec-block" style="margin-top:8px">
+        <div class="sub-lbl" style="color:var(--bl800)">Junior <span style="font-weight:400;font-style:italic;letter-spacing:0;text-transform:none">(in formazione)</span></div>
+        <div class="sedi-row">
+          <div class="sede-col">
+            <div class="sede-lbl">Padova</div>
+            <div class="pgrid" id="g-bj-pd">
+              <span class="pill c-bl junior" onclick="editPill(this)"><span class="pill-initials">PN</span><span class="pill-label">Patella N.</span><span class="pill-tooltip"></span></span>
+              <span class="pill c-bl junior" onclick="editPill(this)"><span class="pill-initials">VC</span><span class="pill-label">Vieceli C.</span><span class="pill-tooltip"></span></span>
+              <span class="pill c-bl junior" onclick="editPill(this)"><span class="pill-initials">AA</span><span class="pill-label">Aldino Colbachini A.</span><span class="pill-tooltip"></span></span>
+              <span class="pill c-bl junior" onclick="editPill(this)"><span class="pill-initials">VS</span><span class="pill-label">Vanuzzo S.</span><span class="pill-tooltip"></span></span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="sec-sep"></div>
+
+      <div class="sec-block">
+        <div class="sub-lbl" style="color:var(--sk600)">Paralegal</div>
+        <div class="sedi-row">
+          <div class="sede-col">
+            <div class="sede-lbl">Padova</div>
+            <div class="pgrid" id="g-bp-pd">
+              <span class="pill c-sk resp" onclick="editPill(this)"><span class="pill-initials">MG</span><span class="pill-label">Milan Giovanna</span><span class="pill-tooltip"></span></span>
+              <span class="pill c-sk" onclick="editPill(this)"><span class="pill-initials">BS</span><span class="pill-label">Biasion S.</span><span class="pill-tooltip"></span></span>
+              <span class="pill c-sk" onclick="editPill(this)"><span class="pill-initials">BD</span><span class="pill-label">Boscolo D.</span><span class="pill-tooltip"></span></span>
+              <span class="pill c-sk" onclick="editPill(this)"><span class="pill-initials">BV</span><span class="pill-label">Bustreo V.</span><span class="pill-tooltip"></span></span>
+              <span class="pill c-sk" onclick="editPill(this)"><span class="pill-initials">MA</span><span class="pill-label">Moro A.</span><span class="pill-tooltip"></span></span>
+              <span class="pill c-sk" onclick="editPill(this)"><span class="pill-initials">NI</span><span class="pill-label">Nystrom I.</span><span class="pill-tooltip"></span></span>
+              <span class="pill c-sk" onclick="editPill(this)"><span class="pill-initials">PL</span><span class="pill-label">Parma L.</span><span class="pill-tooltip"></span></span>
+              <span class="pill c-sk" onclick="editPill(this)"><span class="pill-initials">RE</span><span class="pill-label">Rota E.</span><span class="pill-tooltip"></span></span>
+              <span class="pill c-sk" onclick="editPill(this)"><span class="pill-initials">SM</span><span class="pill-label">Sporzon M.</span><span class="pill-tooltip"></span></span>
+              <span class="pill c-sk" onclick="editPill(this)"><span class="pill-initials">VF</span><span class="pill-label">Vadore F.</span><span class="pill-tooltip"></span></span>
+              <span class="pill c-sk" onclick="editPill(this)"><span class="pill-initials">ZV</span><span class="pill-label">Zampieri V.</span><span class="pill-tooltip"></span></span>
+            </div>
+          </div>
+          <div class="sede-col">
+            <div class="sede-lbl">Roma</div>
+            <div class="pgrid" id="g-bp-ro">
+              <span class="pill c-sk" onclick="editPill(this)"><span class="pill-initials">CV</span><span class="pill-label">Cipriani V.</span><span class="pill-tooltip"></span></span>
+              <span class="pill c-sk" onclick="editPill(this)"><span class="pill-initials">RA</span><span class="pill-label">Ronchese A.</span><span class="pill-tooltip"></span></span>
+            </div>
+          </div>
+          <div class="sede-col">
+            <div class="sede-lbl">Treviso</div>
+            <div class="pgrid" id="g-bp-tv">
+              <span class="pill c-sk" onclick="editPill(this)"><span class="pill-initials">RB</span><span class="pill-label">Balaj R.</span><span class="pill-tooltip"></span></span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div><!-- end brevetti -->
+
+    <!-- ══ MARCHI ══ -->
+    <div class="branch" style="flex:1.05" id="branch-mar">
+      <div class="vl" style="height:12px"></div>
+      <div class="ah c-co" id="ah-mar">Area marchi</div>
+      <div class="vl" style="height:10px"></div>
+
+      <div class="sec-block">
+        <div class="sub-lbl" style="color:var(--co600)">Consulenti</div>
+        <div class="sedi-row">
+          <div class="sede-col">
+            <div class="sede-lbl">Padova</div>
+            <div class="pgrid" id="g-mc-pd">
+              <span class="pill c-co socio resp" onclick="editPill(this)"><span class="pill-initials">BA</span><span class="pill-label">Benettin A.</span><span class="pill-tooltip"></span></span>
+              <span class="pill c-co socio avvocato" onclick="editPill(this)"><span class="pill-initials">CE</span><span class="pill-label">Campanelli E.</span><span class="pill-tooltip"></span></span>
+              <span class="pill c-co socio avvocato" onclick="editPill(this)"><span class="pill-initials">SB</span><span class="pill-label">Saguatti B.</span><span class="pill-tooltip"></span></span>
+              <span class="pill c-co" onclick="editPill(this)"><span class="pill-initials">BE</span><span class="pill-label">Bacchin E.</span><span class="pill-tooltip"></span></span>
+              <span class="pill c-co" onclick="editPill(this)"><span class="pill-initials">CC</span><span class="pill-label">Come C.</span><span class="pill-tooltip"></span></span>
+            </div>
+          </div>
+          <div class="sede-col">
+            <div class="sede-lbl">Milano</div>
+            <div class="pgrid" id="g-mc-mi">
+              <span class="pill c-co" onclick="editPill(this)"><span class="pill-initials">GL</span><span class="pill-label">Ghedini L.</span><span class="pill-tooltip"></span></span>
+              <span class="pill c-co" onclick="editPill(this)"><span class="pill-initials">TA</span><span class="pill-label">Turato A.</span><span class="pill-tooltip"></span></span>
+            </div>
+          </div>
+          <div class="sede-col">
+            <div class="sede-lbl">Roma</div>
+            <div class="pgrid" id="g-mc-ro">
+              <span class="pill c-co" onclick="editPill(this)"><span class="pill-initials">SI</span><span class="pill-label">Spagnulo I.</span><span class="pill-tooltip"></span></span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="sec-sep"></div>
+
+      <div class="sec-block">
+        <div class="sub-lbl" style="color:var(--pi600)">Paralegal</div>
+        <div class="sedi-row">
+          <div class="sede-col">
+            <div class="sede-lbl">Padova</div>
+            <div class="pgrid" id="g-mp-pd">
+              <span class="pill c-pi" onclick="editPill(this)"><span class="pill-initials">AF</span><span class="pill-label">Artuso F.</span><span class="pill-tooltip"></span></span>
+              <span class="pill c-pi" onclick="editPill(this)"><span class="pill-initials">BF</span><span class="pill-label">Biasini F.</span><span class="pill-tooltip"></span></span>
+              <span class="pill c-pi" onclick="editPill(this)"><span class="pill-initials">CL</span><span class="pill-label">Corradin L.</span><span class="pill-tooltip"></span></span>
+              <span class="pill c-pi" onclick="editPill(this)"><span class="pill-initials">DV</span><span class="pill-label">Del Peschio V.</span><span class="pill-tooltip"></span></span>
+              <span class="pill c-pi" onclick="editPill(this)"><span class="pill-initials">FA</span><span class="pill-label">Ferrero A.</span><span class="pill-tooltip"></span></span>
+              <span class="pill c-pi" onclick="editPill(this)"><span class="pill-initials">MG</span><span class="pill-label">Morando G.</span><span class="pill-tooltip"></span></span>
+              <span class="pill c-pi" onclick="editPill(this)"><span class="pill-initials">NS</span><span class="pill-label">Novello S.</span><span class="pill-tooltip"></span></span>
+            </div>
+          </div>
+          <div class="sede-col">
+            <div class="sede-lbl">Milano</div>
+            <div class="pgrid" id="g-mp-mi">
+              <span class="pill c-pi" onclick="editPill(this)"><span class="pill-initials">BG</span><span class="pill-label">Beretta G.</span><span class="pill-tooltip"></span></span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div><!-- end marchi -->
+
+    <!-- ══ OPERATIONS — fixed width, separated ══ -->
+    <div class="branch-ops" id="branch-ops">
+      <div class="vl" style="height:12px"></div>
+      <div class="ah c-gr" id="ah-ops" style="width:100%;text-align:center">Operations</div>
+      <div class="vld" style="height:10px"></div>
+      <div class="ops-box">
+        <div class="ops-title">Organo di staff</div>
+        <div class="ops-cfo" onclick="editNode('cfo')">
+          <div class="ops-initials" id="av-cfo">CM</div>
+          <div style="min-width:0">
+            <div class="opn" id="nm-cfo">Collizzolli M.</div>
+            <div class="opr" id="sb-cfo">CFO</div>
+          </div>
+          <span class="ops-tooltip" id="tt-cfo"></span>
+        </div>
+        <div class="ops-person" onclick="editNode('conforti')">
+          <div class="ops-initials" id="av-conforti">CF</div>
+          <div style="min-width:0">
+            <div class="opn" id="nm-conforti">Conforti F.</div>
+            <div class="opr" id="sb-conforti">Accounting Manager</div>
+          </div>
+          <span class="ops-tooltip" id="tt-conforti"></span>
+        </div>
+        <div class="ops-person" onclick="editNode('falaguasta')">
+          <div class="ops-initials" id="av-falaguasta">FA</div>
+          <div style="min-width:0">
+            <div class="opn" id="nm-falaguasta">Falaguasta A.</div>
+            <div class="opr" id="sb-falaguasta">IT Manager</div>
+          </div>
+          <span class="ops-tooltip" id="tt-falaguasta"></span>
+        </div>
+        <div class="ops-person" onclick="editNode('bonaldo')">
+          <div class="ops-initials" id="av-bonaldo">BT</div>
+          <div style="min-width:0">
+            <div class="opn" id="nm-bonaldo">Bonaldo T.</div>
+            <div class="opr" id="sb-bonaldo">Jr Controller</div>
+          </div>
+          <span class="ops-tooltip" id="tt-bonaldo"></span>
+        </div>
+        <div class="ops-person" onclick="editNode('tocci')">
+          <div class="ops-initials" id="av-tocci">TM</div>
+          <div style="min-width:0">
+            <div class="opn" id="nm-tocci">Tocci M.</div>
+            <div class="opr" id="sb-tocci">Accounting</div>
+          </div>
+          <span class="ops-tooltip" id="tt-tocci"></span>
+        </div>
+        <div class="ops-person" onclick="editNode('rocco')">
+          <div class="ops-initials" id="av-rocco">RM</div>
+          <div style="min-width:0">
+            <div class="opn" id="nm-rocco">Rocco M.</div>
+            <div class="opr" id="sb-rocco">Centralinista</div>
+          </div>
+          <span class="ops-tooltip" id="tt-rocco"></span>
+        </div>
+      </div>
+    </div>
+
+  </div><!-- end branches -->
+
+  <!-- SVG ARROWS -->
+  <svg id="arrows-svg" style="position:absolute;top:0;left:0;pointer-events:none;z-index:10;overflow:visible" width="0" height="0">
+    <defs>
+      <marker id="ah1" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+        <path d="M2 1L8 5L2 9" fill="none" stroke="#5F5E5A" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+      </marker>
+      <marker id="ah2" viewBox="0 0 10 10" refX="2" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+        <path d="M8 1L2 5L8 9" fill="none" stroke="#5F5E5A" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+      </marker>
+    </defs>
+    <path id="arrow-brev-ops" fill="none" stroke="#5F5E5A" stroke-width="1.5" stroke-dasharray="5 4" marker-end="url(#ah1)" marker-start="url(#ah2)" opacity="0.5"/>
+    <path id="arrow-mar-ops"  fill="none" stroke="#5F5E5A" stroke-width="1.5" stroke-dasharray="5 4" marker-end="url(#ah1)" marker-start="url(#ah2)" opacity="0.5"/>
+  </svg>
+
+  <!-- LEGEND -->
+  <div class="legend">
+    <div class="li"><div class="ld" style="border-color:var(--pu600);background:var(--pu50)"></div>Vertice strategico</div>
+    <div class="li"><div class="ld" style="border-color:var(--te600);background:var(--te50)"></div>CEO</div>
+    <div class="li"><div class="lp" style="background:var(--bl50);border-color:var(--gn600);border-width:2px;color:var(--gn600)"></div>Socio</div>
+    <div class="li"><div class="lp" style="background:var(--bl50);border-color:var(--bl600);color:var(--bl800)">★</div>Responsabile</div>
+    <div class="li"><div class="lp" style="background:var(--bl50);border-color:var(--bl600)"></div>Consulente brevetti</div>
+    <div class="li"><div class="lp" style="background:var(--bl50);border-color:var(--bl600);border-style:dashed;opacity:.8"></div>Junior</div>
+    <div class="li"><div class="lp" style="background:var(--sk50);border-color:var(--sk600)"></div>Paralegal brevetti</div>
+    <div class="li"><div class="lp" style="background:var(--co50);border-color:var(--co600)"></div>Consulente marchi</div>
+    <div class="li"><div class="lp" style="background:var(--vi50);border-color:var(--vi600)"></div>Avvocato</div>
+    <div class="li"><div class="lp" style="background:var(--pi50);border-color:var(--pi600)"></div>Paralegal marchi</div>
+    <div class="li"><div class="lp" style="background:var(--gr50);border-color:var(--gr600);border-style:dashed"></div>Operations</div>
+    <div class="li"><div class="ll" style="background:var(--border)"></div>Gerarchica</div>
+    <div class="li">
+      <svg width="24" height="12" style="overflow:visible"><line x1="2" y1="6" x2="22" y2="6" stroke="#5F5E5A" stroke-width="1.5" stroke-dasharray="4 3" opacity=".55"/></svg>
+      Interazione con Operations
+    </div>
+  </div>
+  <div style="text-align:center;margin-top:12px;font-size:11px;color:var(--muted)">
+    Clicca per modificare · Passa il cursore per leggere la descrizione
+  </div>
+
+</div>
+
+<input type="file" id="file-input" accept="image/*">
+
+<!-- MODAL -->
+<div class="mo" id="mo" onclick="closeMo(event)">
+  <div class="mc" onclick="event.stopPropagation()">
+    <h2 id="mo-title">Modifica</h2>
+
+    <!-- NODE -->
+    <div id="f-node">
+      <label>Nome</label><input id="f-nm" type="text">
+      <label>Ruolo / nota</label><input id="f-rl" type="text">
+      <label>Descrizione</label>
+      <textarea id="f-ndesc" placeholder="Breve bio, specializzazione, anni di esperienza…"></textarea>
+      <div class="photo-preview-wrap">
+        <img id="f-node-photo" class="photo-preview" src="" alt="foto">
+        <div class="photo-placeholder" id="f-node-placeholder">Nessuna foto</div>
+        <button class="btn btn-photo" onclick="triggerPhoto('node')">Carica foto</button>
+        <button class="btn btn-rm-photo" id="f-node-rm-btn" onclick="removePhoto('node')" style="display:none">Rimuovi foto</button>
+      </div>
+    </div>
+
+    <!-- PILL -->
+    <div id="f-pill" style="display:none">
+      <label>Nome (Cognome N.)</label><input id="f-pnm" type="text">
+      <label>Tipo</label>
+      <select id="f-pty">
+        <option value="c-bl">Consulente brevetti</option>
+        <option value="c-sk">Paralegal brevetti</option>
+        <option value="c-co">Consulente / Avv. marchi</option>
+        <option value="c-pi">Paralegal marchi</option>
+        <option value="c-gr">Amministrazione</option>
+      </select>
+      <label>Descrizione</label>
+      <textarea id="f-pdesc" placeholder="Breve bio, specializzazione, anni di esperienza…"></textarea>
+      <div class="cr"><input type="checkbox" id="f-socio"><label for="f-socio" style="margin:0;font-size:13px;color:var(--text)">Socio</label></div>
+      <div class="cr"><input type="checkbox" id="f-junior"><label for="f-junior" style="margin:0;font-size:13px;color:var(--text)">Junior</label></div>
+      <div class="cr"><input type="checkbox" id="f-resp"><label for="f-resp" style="margin:0;font-size:13px;color:var(--text)">Responsabile ★</label></div>
+      <div class="cr"><input type="checkbox" id="f-avv"><label for="f-avv" style="margin:0;font-size:13px;color:var(--text)">Avvocato</label></div>
+      <div class="photo-preview-wrap">
+        <img id="f-pill-photo" class="photo-preview" src="" alt="foto">
+        <div class="photo-placeholder" id="f-pill-placeholder">Nessuna foto</div>
+        <button class="btn btn-photo" onclick="triggerPhoto('pill')">Carica foto</button>
+        <button class="btn btn-rm-photo" id="f-pill-rm-btn" onclick="removePhoto('pill')" style="display:none">Rimuovi foto</button>
+      </div>
+    </div>
+
+    <!-- ADD -->
+    <div id="f-add" style="display:none">
+      <label>Nome (Cognome N.)</label><input id="f-anm" type="text" placeholder="es. Rossi M.">
+      <label>Area / sede</label>
+      <select id="f-area" onchange="toggleOpsRole(this.value)">
+        <option value="g-bc-pd">Brevetti Padova — consulenti</option>
+        <option value="g-bj-pd">Brevetti Padova — junior</option>
+        <option value="g-bp-pd">Brevetti Padova — paralegal</option>
+        <option value="g-bc-ro">Brevetti Roma — consulenti</option>
+        <option value="g-bp-ro">Brevetti Roma — paralegal</option>
+        <option value="g-bc-tv">Brevetti Treviso — consulenti</option>
+        <option value="g-bp-tv">Brevetti Treviso — paralegal</option>
+        <option value="g-bc-mi">Brevetti Milano — consulenti</option>
+        <option value="g-mc-pd">Marchi Padova — consulenti</option>
+        <option value="g-mp-pd">Marchi Padova — paralegal</option>
+        <option value="g-mc-mi">Marchi Milano — consulenti</option>
+        <option value="g-mp-mi">Marchi Milano — paralegal</option>
+        <option value="g-mc-ro">Marchi Roma — consulenti</option>
+        <option value="ops-new">Operations</option>
+      </select>
+      <label>Tipo</label>
+      <select id="f-aty">
+        <option value="c-bl">Consulente brevetti</option>
+        <option value="c-sk">Paralegal brevetti</option>
+        <option value="c-co">Consulente / Avv. marchi</option>
+        <option value="c-pi">Paralegal marchi</option>
+        <option value="c-gr">Amministrazione</option>
+      </select>
+      <div id="f-ops-role-wrap" style="display:none">
+        <label>Ruolo</label><input id="f-arole" type="text" placeholder="es. Centralinista">
+      </div>
+      <label>Descrizione</label>
+      <textarea id="f-adesc" placeholder="Breve bio, specializzazione, anni di esperienza…"></textarea>
+      <div class="cr"><input type="checkbox" id="f-asocio"><label for="f-asocio" style="margin:0;font-size:13px;color:var(--text)">Socio</label></div>
+      <div class="cr"><input type="checkbox" id="f-ajunior"><label for="f-ajunior" style="margin:0;font-size:13px;color:var(--text)">Junior</label></div>
+      <div class="cr"><input type="checkbox" id="f-aresp"><label for="f-aresp" style="margin:0;font-size:13px;color:var(--text)">Responsabile ★</label></div>
+      <div class="cr"><input type="checkbox" id="f-aavv"><label for="f-aavv" style="margin:0;font-size:13px;color:var(--text)">Avvocato</label></div>
+      <div class="photo-preview-wrap">
+        <img id="f-add-photo" class="photo-preview" src="" alt="foto">
+        <div class="photo-placeholder" id="f-add-placeholder">Nessuna foto</div>
+        <button class="btn btn-photo" onclick="triggerPhoto('add')">Carica foto</button>
+        <button class="btn btn-rm-photo" id="f-add-rm-btn" onclick="removePhoto('add')" style="display:none">Rimuovi foto</button>
+      </div>
+    </div>
+
+    <div class="ma">
+      <button class="btn btn-danger" id="del-btn" style="display:none" onclick="delCurrent()">Rimuovi</button>
+      <button class="btn btn-ghost" onclick="closeMo()">Annulla</button>
+      <button class="btn btn-primary" onclick="saveMo()">Salva</button>
+    </div>
+  </div>
+</div>
+
+<script>
+let mode=null,curId=null,curPill=null,pendingPhoto=null,photoTarget=null;
+
+const nd={
+  fondatore:{nm:'Cantaluppi S.',rl:'Vertice strategico',photo:'data:image/jpeg;base64,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',desc:''},
+  ceo:{nm:'Locas D.',rl:'Direzione operativa',photo:null,desc:''},
+  cfo:{nm:'Collizzolli M.',rl:'CFO',photo:null,desc:''},
+  conforti:{nm:'Conforti F.',rl:'Accounting Manager',photo:null,desc:''},
+  falaguasta:{nm:'Falaguasta A.',rl:'IT Manager',photo:null,desc:''},
+  bonaldo:{nm:'Bonaldo T.',rl:'Jr Controller',photo:null,desc:''},
+  tocci:{nm:'Tocci M.',rl:'Accounting',photo:null,desc:''},
+  rocco:{nm:'Rocco M.',rl:'Centralinista',photo:null,desc:''},
+};
+
+/* ── PHOTO ── */
+function triggerPhoto(t){photoTarget=t;document.getElementById('file-input').click();}
+document.getElementById('file-input').addEventListener('change',function(){
+  const f=this.files[0];if(!f)return;
+  const r=new FileReader();
+  r.onload=e=>{pendingPhoto=e.target.result;showPhotoPreview(photoTarget,pendingPhoto);};
+  r.readAsDataURL(f);this.value='';
+});
+function showPhotoPreview(t,src){
+  const img=document.getElementById('f-'+t+'-photo');
+  const ph=document.getElementById('f-'+t+'-placeholder');
+  const rm=document.getElementById('f-'+t+'-rm-btn');
+  if(src){img.src=src;img.classList.add('has-photo');ph.style.display='none';rm.style.display='';}
+  else{img.src='';img.classList.remove('has-photo');ph.style.display='';rm.style.display='none';}
+}
+function removePhoto(t){pendingPhoto='';showPhotoPreview(t,null);}
+
+function getInitials(n){return n.split(/\s+/).map(w=>w[0]||'').join('').toUpperCase().slice(0,2);}
+
+function setAvatarOnPill(pill,photo,initials){
+  const existing=pill.querySelector('.pill-avatar,.pill-initials');
+  if(!existing)return;
+  if(photo){
+    const img=document.createElement('img');img.className='pill-avatar';img.src=photo;img.alt=initials;existing.replaceWith(img);
+  } else {
+    const sp=document.createElement('span');sp.className='pill-initials';sp.textContent=initials;
+    const av=pill.querySelector('.pill-avatar');if(av)av.replaceWith(sp);
+  }
+}
+function setOpsAvatar(id,photo,initials){
+  const el=document.getElementById('av-'+id);if(!el)return;
+  if(photo){
+    const img=document.createElement('img');img.className='ops-avatar';img.id='av-'+id;img.src=photo;img.alt=initials;el.replaceWith(img);
+  } else {
+    const sp=document.createElement('span');sp.className='ops-initials';sp.id='av-'+id;sp.textContent=initials;
+    const cur=document.getElementById('av-'+id);if(cur)cur.replaceWith(sp);
+  }
+}
+
+/* ── TOOLTIP helpers ── */
+function setTooltipOnPill(pill, desc){
+  let tt=pill.querySelector('.pill-tooltip');
+  if(!tt){tt=document.createElement('span');tt.className='pill-tooltip';pill.appendChild(tt);}
+  tt.textContent=desc||'';
+  tt.style.display = desc ? '' : 'none'; // keep in DOM but hide if empty
+}
+function setTooltipOnOps(id, desc){
+  const tt=document.getElementById('tt-'+id);
+  if(tt){tt.textContent=desc||'';tt.style.display=desc?'':'none';}
+}
+
+/* ── ARROWS ── */
+function drawArrows(){
+  const page=document.getElementById('main-page');
+  const ahBrev=document.getElementById('ah-brev');
+  const ahMar=document.getElementById('ah-mar');
+  const ahOps=document.getElementById('ah-ops');
+  const svg=document.getElementById('arrows-svg');
+  if(!page||!ahBrev||!ahMar||!ahOps||!svg)return;
+  const pr=page.getBoundingClientRect();
+  svg.setAttribute('width',pr.width);svg.setAttribute('height',pr.height+60);
+  svg.style.width=pr.width+'px';svg.style.height=(pr.height+60)+'px';
+  function rel(el){const r=el.getBoundingClientRect();return{top:r.top-pr.top,bottom:r.bottom-pr.top,left:r.left-pr.left,right:r.right-pr.left,midX:r.left-pr.left+r.width/2,midY:r.top-pr.top+r.height/2};}
+  const brev=rel(ahBrev),mar=rel(ahMar),ops=rel(ahOps);
+  const mMid=(mar.right+ops.left)/2;
+  document.getElementById('arrow-mar-ops').setAttribute('d',`M${mar.right} ${mar.midY} C${mMid} ${mar.midY} ${mMid} ${ops.midY} ${ops.left} ${ops.midY}`);
+  const ABOVE=Math.min(brev.top,mar.top,ops.top)-26;
+  document.getElementById('arrow-brev-ops').setAttribute('d',`M${brev.midX} ${brev.top} L${brev.midX} ${ABOVE} L${ops.midX} ${ABOVE} L${ops.midX} ${ops.top}`);
+}
+window.addEventListener('DOMContentLoaded',()=>{
+  document.getElementById('main-page').appendChild(document.getElementById('arrows-svg'));
+  // init tooltip visibility
+  document.querySelectorAll('.pill-tooltip').forEach(tt=>{tt.style.display='none';});
+  document.querySelectorAll('.ops-tooltip').forEach(tt=>{tt.style.display='none';});
+  setTimeout(drawArrows,150);
+});
+window.addEventListener('resize',()=>setTimeout(drawArrows,80));
+
+/* ── MODAL OPEN ── */
+function editNode(id){
+  mode='node';curId=id;pendingPhoto=null;
+  const d=nd[id];
+  document.getElementById('mo-title').textContent='Modifica — '+d.nm;
+  document.getElementById('f-nm').value=d.nm;
+  document.getElementById('f-rl').value=d.rl;
+  document.getElementById('f-ndesc').value=d.desc||'';
+  showPhotoPreview('node',d.photo||null);
+  document.getElementById('f-node').style.display='';
+  document.getElementById('f-pill').style.display='none';
+  document.getElementById('f-add').style.display='none';
+  document.getElementById('del-btn').style.display='none';
+  document.getElementById('mo').classList.add('open');
+}
+
+function editPill(el){
+  mode='pill';curPill=el;pendingPhoto=null;
+  const lbl=el.querySelector('.pill-label');
+  const tt=el.querySelector('.pill-tooltip');
+  document.getElementById('mo-title').textContent='Modifica persona';
+  document.getElementById('f-pnm').value=lbl?lbl.textContent.replace('★','').trim():'';
+  document.getElementById('f-pdesc').value=tt?tt.textContent:'';
+  ['c-bl','c-sk','c-co','c-pi','c-gr'].forEach(t=>{if(el.classList.contains(t))document.getElementById('f-pty').value=t;});
+  document.getElementById('f-socio').checked=el.classList.contains('socio');
+  document.getElementById('f-junior').checked=el.classList.contains('junior');
+  document.getElementById('f-resp').checked=el.classList.contains('resp');
+  document.getElementById('f-avv').checked=el.classList.contains('avvocato');
+  const av=el.querySelector('.pill-avatar');
+  showPhotoPreview('pill',av?av.src:null);
+  document.getElementById('f-node').style.display='none';
+  document.getElementById('f-pill').style.display='';
+  document.getElementById('f-add').style.display='none';
+  document.getElementById('del-btn').style.display='';
+  document.getElementById('mo').classList.add('open');
+}
+
+function openAdd(){
+  mode='add';pendingPhoto=null;
+  document.getElementById('mo-title').textContent='Aggiungi persona';
+  document.getElementById('f-anm').value='';
+  document.getElementById('f-adesc').value='';
+  ['f-asocio','f-ajunior','f-aresp','f-aavv'].forEach(id=>document.getElementById(id).checked=false);
+  showPhotoPreview('add',null);
+  document.getElementById('f-node').style.display='none';
+  document.getElementById('f-pill').style.display='none';
+  document.getElementById('f-add').style.display='';
+  document.getElementById('del-btn').style.display='none';
+  document.getElementById('mo').classList.add('open');
+}
+
+/* ── CLASSES ── */
+function applyClasses(el,ty,s,j,r,a){
+  ['c-bl','c-sk','c-co','c-pi','c-gr'].forEach(t=>el.classList.remove(t));
+  el.classList.add(ty);
+  el.classList.toggle('socio',s);
+  el.classList.toggle('junior',j);
+  el.classList.toggle('resp',r);
+  el.classList.toggle('avvocato',a);
+}
+
+/* ── SAVE ── */
+function saveMo(){
+  if(mode==='node'){
+    const nm=document.getElementById('f-nm').value.trim();
+    const rl=document.getElementById('f-rl').value.trim();
+    const desc=document.getElementById('f-ndesc').value.trim();
+    nd[curId].nm=nm;nd[curId].rl=rl;nd[curId].desc=desc;
+    if(pendingPhoto!==null)nd[curId].photo=pendingPhoto||null;
+    const ne=document.getElementById('nm-'+curId);
+    const re=document.getElementById('sb-'+curId);
+    if(ne)ne.textContent=nm;if(re)re.textContent=rl;
+    setTooltipOnOps(curId,desc);
+    if(pendingPhoto!==null){
+      setOpsAvatar(curId,pendingPhoto||null,getInitials(nm));
+      // also update inline nbox avatar if present
+      const nbAv=document.getElementById('av-'+curId);
+      if(nbAv&&nbAv.tagName==='IMG'&&pendingPhoto){nbAv.src=pendingPhoto;}
+    }
+  } else if(mode==='pill'){
+    const nm=document.getElementById('f-pnm').value.trim();
+    const ty=document.getElementById('f-pty').value;
+    const desc=document.getElementById('f-pdesc').value.trim();
+    if(nm&&curPill){
+      const lbl=curPill.querySelector('.pill-label');
+      if(lbl)lbl.textContent=nm;
+      applyClasses(curPill,ty,
+        document.getElementById('f-socio').checked,
+        document.getElementById('f-junior').checked,
+        document.getElementById('f-resp').checked,
+        document.getElementById('f-avv').checked);
+      setTooltipOnPill(curPill,desc);
+      if(pendingPhoto!==null)setAvatarOnPill(curPill,pendingPhoto||null,getInitials(nm));
+    }
+  } else if(mode==='add'){
+    const nm=document.getElementById('f-anm').value.trim();
+    const area=document.getElementById('f-area').value;
+    const ty=document.getElementById('f-aty').value;
+    const desc=document.getElementById('f-adesc').value.trim();
+    if(nm){
+      const g=document.getElementById(area);
+      if(g){
+        const initials=getInitials(nm);
+        const photo=pendingPhoto||null;
+        const p=document.createElement('span');
+        p.className='pill';p.setAttribute('onclick','editPill(this)');
+        applyClasses(p,ty,
+          document.getElementById('f-asocio').checked,
+          document.getElementById('f-ajunior').checked,
+          document.getElementById('f-aresp').checked,
+          document.getElementById('f-aavv').checked);
+        if(photo){const img=document.createElement('img');img.className='pill-avatar';img.src=photo;img.alt=initials;p.appendChild(img);}
+        else{const sp=document.createElement('span');sp.className='pill-initials';sp.textContent=initials;p.appendChild(sp);}
+        const lbl=document.createElement('span');lbl.className='pill-label';lbl.textContent=nm;p.appendChild(lbl);
+        const tt=document.createElement('span');tt.className='pill-tooltip';tt.textContent=desc;tt.style.display=desc?'':'none';p.appendChild(tt);
+        g.appendChild(p);
+      }
+    }
+  }
+  closeMo();setTimeout(drawArrows,80);
+}
+
+function delCurrent(){
+  if(mode==='pill'&&curPill){
+    const lbl=curPill.querySelector('.pill-label');
+    const name=lbl?lbl.textContent.replace('★','').trim():'questa persona';
+    if(confirm('Rimuovere '+name+'?')){curPill.remove();closeMo();setTimeout(drawArrows,80);}
+  }
+}
+function toggleOpsRole(val){
+  const wrap=document.getElementById('f-ops-role-wrap');
+  if(wrap) wrap.style.display = val==='ops-new' ? '' : 'none';
+}
+
+function editNodeDyn(row){
+  const id=row.dataset.nodeId;
+  if(!id||!nd[id])return;
+  editNode(id);
+}
+
+function closeMo(e){
+  if(!e||e.target===document.getElementById('mo')){
+    document.getElementById('mo').classList.remove('open');
+    curPill=null;curId=null;pendingPhoto=null;
+  }
+}
+function exportHTML(){
+  const svg=document.getElementById('arrows-svg');
+  const clone=svg.cloneNode(true);svg.remove();
+  const blob=new Blob([document.documentElement.outerHTML],{type:'text/html'});
+  const a=document.createElement('a');a.href=URL.createObjectURL(blob);
+  a.download='organigramma_cantaluppi_v9.html';a.click();
+  document.getElementById('main-page').appendChild(clone);setTimeout(drawArrows,80);
+}
+</script>
+</body>
+</html>
